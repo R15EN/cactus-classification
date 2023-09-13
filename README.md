@@ -54,3 +54,5 @@ python app.py
 - [Matplotlib](https://matplotlib.org/)
 - [Pandas](https://pandas.pydata.org/)
 - [Scikit-learn](https://scikit-learn.org/stable/)
+- [OpenCV](https://opencv.org/get-started/)
+- [ONNX](https://onnx.ai/)
