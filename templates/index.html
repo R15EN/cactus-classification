@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cactus classifier</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Cactus classifier</h1>
+        <form method="POST" enctype="multipart/form-data" class="upload-form">
+            <input type="file" name="file" class="upload-button" id="file-input" accept="image/*" required>
+            <label for="file-input" class="upload-label">Choose an image</label>
+
+            <input type="submit" id="image-submit" class="submit-button">
+            <label for="image-submit" class="submit-label">Load</label>
+
+        </form>
+        <div id="image-preview">
+            <h3>Image preview:</h3>
+            <p id="image-filename"></p>
+            <img id="preview-image">
+        </div>
+        {% if predictions %}
+        <div id="prediction-results">
+            <h3>Most likely shown in the picture {{ predictions[0][0] }}</h3>
+            <h3>Prediction Results:</h3>
+            
+            <ul id="predictions-list">
+                {% for class_name, prediction_value in predictions %}
+                    <li class="prediction-item" data-class="{{ class_name }}">
+                        <span class="class-name">{{ class_name }}</span>
+                        <span class="prediction-value">{{ prediction_value|round(3) }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <div id="class-text">
+                <h3>Short description:</h3>
+                <div id="class-text-content"></div>
+            </div>
+
+        </div>
+
+        {% endif %}
+    </div>
+</body>
+</html>
